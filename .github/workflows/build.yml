@@ -21,10 +21,10 @@ jobs:
         cargo build --lib --release --target x86_64-unknown-linux-gnu
     - name: List Artifacts
       run: |
-        ls -la /home/runner/work/oxigres-lib/oxigres-lib
+        ls -la /home/runner/work/oxigres-lib/oxigres-lib/target/release
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
         name: liboxigres.so
-        path: /home/runner/work/oxigres-lib/oxigres-lib/liboxigres.so
+        path: /home/runner/work/oxigres-lib/oxigres-lib/target/release/liboxigres.so
         if_no_files_found: error
