@@ -20,7 +20,7 @@ jobs:
       run: rustup target add x86_64-unknown-linux-gnu aarch64-apple-darwin x86_64-pc-windows-gnu
     - name: Install Packages
       run: |
-        sudo apt-get install -y pkg-config openssl1.0 libssl1.0.0 libssl1.0-dev 
+        sudo apt-get install -y pkg-config openssl libssl libssl-dev 
         cargo clean 
         OPENSSL_INCLUDE_DIR="/usr/include/openssl" 
     - name: Build Linux
