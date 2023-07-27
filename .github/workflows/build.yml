@@ -18,6 +18,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install Platform Toolchains
       run: rustup target add x86_64-unknown-linux-gnu aarch64-apple-darwin x86_64-pc-windows-gnu
+    - name: Install pkg-config
+      run: sudo apt-get install -y pkg-config
     - name: Build Linux
       run: cargo build --lib --release --target x86_64-unknown-linux-gnu
     - name: Build MacOS
