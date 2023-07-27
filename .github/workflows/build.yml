@@ -21,10 +21,10 @@ jobs:
         cargo build --lib --release --target x86_64-unknown-linux-gnu
     - name: List Artifacts
       run: |
-        ls -la target
+        ls -la target/x86_64-unknown-linux-gnu
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
         name: liboxigres.so
-        path: target/liboxigres.so
+        path: target/x86_64-unknown-linux-gnu/liboxigres.so
         if_no_files_found: error
