@@ -19,6 +19,9 @@ jobs:
     - name: Build Linux
       run: |
         cargo build --lib --release --target x86_64-unknown-linux-gnu
+    - name: List Artifacts
+      run: |
+        ls -la target/release
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
