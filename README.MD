@@ -8,7 +8,7 @@ Oxigres is a dynamic library intended to query a PostGRES database using a C com
 ## Setup Steps
 <ol>
     <li>Ensure your PostGRES database is set up
-    <li>Download or Build the Dynamic Library
+    <li>Download (x64 Linux) or Build the Dynamic Library (Windows, Mac, and ARM Linux)
     <li>Download your PostGRES SSL Certificate
     <li>Setup Environment Variables
     <li>Call the DLL from your application
