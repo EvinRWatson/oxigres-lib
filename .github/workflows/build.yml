@@ -18,13 +18,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build Linux
       run: |
-        cargo build --lib --release --target x86_64-unknown-linux-gnu
+        cargo build --lib --release --target-dir /home/artifact --target x86_64-unknown-linux-gnu
     - name: List Artifacts
       run: |
-        ls -la /home/runner/work/oxigres-lib/oxigres-lib/target/release/build
+        ls -la /home/artifact
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
         name: liboxigres.so
-        path: /home/runner/work/oxigres-lib/oxigres-lib/target/release/liboxigres.so
+        path: /home/artifact/liboxigres.so
         if_no_files_found: error
