@@ -19,13 +19,22 @@ jobs:
     - name: Install Platform Toolchains
       run: rustup target add x86_64-unknown-linux-gnu aarch64-apple-darwin x86_64-pc-windows-gnu
     - name: Install Packages
-      run: sudo apt-get install -y pkg-config libssl-dev
+      run: |
+        sudo apt-get install -y pkg-config openssl1.0 libssl1.0.0 libssl1.0-dev 
+        cargo clean 
+        OPENSSL_INCLUDE_DIR="/usr/include/openssl" 
     - name: Build Linux
-      run: cargo build --lib --release --target x86_64-unknown-linux-gnu
+      run: |
+        OPENSSL_LIB_DIR="/usr/lib/x86_64-unknown-linux-gnu"
+        cargo build --lib --release --target x86_64-unknown-linux-gnu
     - name: Build MacOS
-      run: cargo build --lib --release --target aarch64-apple-darwin
+      run: |
+        OPENSSL_LIB_DIR="/usr/lib/aarch64-apple-darwin"
+        cargo build --lib --release --target aarch64-apple-darwin
     - name: Build Windows
-      run: cargo build --lib --release --target x86_64-pc-windows-gnu
+      run: |
+        OPENSSL_LIB_DIR="x86_64-pc-windows-gnu"
+        cargo build --lib --release --target x86_64-pc-windows-gnu
     - name: Zip Artifacts
       run: zip -j target/release/liboxigres.zip target/release/liboxigres.so target/release/liboxigres.dll target/release/liboxigres.dylib
     - name: Upload a Build Artifact
